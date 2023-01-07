@@ -39,9 +39,6 @@ fsutil fsinfo drives > "C:\Users\%username%\Desktop\System Security Report\Disk 
 rem Generate a report on the system network
 ipconfig /all > "C:\Users\%username%\Desktop\System Security Report\Network Report.txt"
 
-rem Generate a report on the system startup
-msconfig > "C:\Users\%username%\Desktop\System Security Report\Startup Report.txt"
-
 rem Generate a report on the system scheduled tasks
 schtasks /query > "C:\Users\%username%\Desktop\System Security Report\Scheduled Tasks Report.txt"
 
