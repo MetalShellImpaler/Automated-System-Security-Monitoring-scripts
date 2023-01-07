@@ -50,16 +50,6 @@ sc query >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityRepor
 
 REM Add the analysis to the report
 
-echo Analysis >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo The firewall profiles scan shows that the system is properly configured and all profiles are enabled. >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo The malicious software scan shows that the system is free of any malicious software. >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo The open ports scan shows that there are no open ports on the system. >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo The running services scan shows that all services are running as expected. >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
 echo Overall, the system security is in good condition. >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
 
 echo End of Report >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
