@@ -1,59 +1,43 @@
 @echo off
 
-REM Automated System Security Monitoring Script
+set reportFile=%userprofile%\Desktop\security_report.txt
 
-REM This script will monitor the system security of a Windows machine and generate a full report on the system security in a txt file on the desktop.
+echo > %reportFile%
 
-REM Create a folder on the desktop to store the report
+echo ============================================= >> %reportFile%
+echo Security Monitoring Report >> %reportFile%
+echo ============================================= >> %reportFile%
+echo Generated on: %date% at %time% >> %reportFile%
+echo. >> %reportFile%
 
-mkDIR C:\Users\%username%\Desktop\SystemSecurityReport
+echo ------------------------------------------------------------------------ >> %reportFile%
+echo SYSTEM INFORMATION >> %reportFile%
+echo ------------------------------------------------------------------------ >> %reportFile%
+systeminfo >> %reportFile%
+echo. >> %reportFile%
 
-REM Scan the system for security vulnerabilities
+echo ------------------------------------------------------------------------ >> %reportFile%
+echo NETWORK INFORMATION >> %reportFile%
+echo ------------------------------------------------------------------------ >> %reportFile%
+netsh interface show interface >> %reportFile%
+echo. >> %reportFile%
 
-Netsh advfirewall show allprofiles
+echo ------------------------------------------------------------------------ >> %reportFile%
+echo tasklist  >> %reportFile%
+echo ------------------------------------------------------------------------ >> %reportFile%
+wmic process get Caption,Processid,SessionId >> %reportFile%
+echo. >> %reportFile%
 
-REM Scan the system for malicious software
+echo ------------------------------------------------------------------------ >> %reportFile%
+echo SYSTEM FILE CHECK >> %reportFile%
+echo ------------------------------------------------------------------------ >> %reportFile%
+sfc /scannow >> %reportFile%
+echo. >> %reportFile%
 
-Sfc /scannow
+echo ------------------------------------------------------------------------ >> %reportFile%
+echo NETWORK CONNECTIONS >> %reportFile%
+echo ------------------------------------------------------------------------ >> %reportFile%
+netstat -ano >> %reportFile%
+echo. >> %reportFile%
 
-REM Scan the system for open ports
-
-netstat -an
-
-REM Scan the system for running services
-
-sc query
-
-REM Generate the report
-
-REM Create the report file
-
-echo System Security Report > C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-REM Add the results of the scans to the report
-
-echo Firewall Profiles >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-Netsh advfirewall show allprofiles >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo Malicious Software Scan >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-Sfc /scannow >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo Open Ports Scan >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-netstat -an >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo Running Services Scan >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-sc query >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-REM Add the analysis to the report
-
-echo Overall, the system security is in good condition. >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-echo End of Report >> C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
-
-REM Open the report
-
-start C:\Users\%username%\Desktop\SystemSecurityReport\SystemSecurityReport.txt
+start notepad %reportFile%
