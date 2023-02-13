@@ -12,8 +12,6 @@ systeminfo > "C:\Users\%username%\Desktop\System Security Report\System Security
 rem Generate a report on the system firewall
 netsh advfirewall show allprofiles > "C:\Users\%username%\Desktop\System Security Report\Firewall Report.txt"
 
-rem Generate a report on the system antivirus
-get-mpprotection > "C:\Users\%username%\Desktop\System Security Report\Antivirus Report.txt"
 
 rem Generate a report on the system updates
 wmic qfe list > "C:\Users\%username%\Desktop\System Security Report\Updates Report.txt"
