@@ -270,4 +270,3 @@ secedit /analyze /cfg "C:\Users\%username%\Desktop\System Security Report\Securi
 
 secedit /analyze /db "C:\Users\%username%\Desktop\System Security Report\Security Baseline Report.txt"
 
-rem Generate a report
